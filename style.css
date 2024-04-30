@@ -1,118 +1,174 @@
-/*
-    Author     : cxMarket
-*/
+@import url("https://fonts.googleapis.com/css?family=Fira+Sans");
+/*Variables*/
+.left-section .inner-content {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
 
+* {
+  box-sizing: border-box;
+}
 
-@import url(https://fonts.googleapis.com/css?family=Advent+Pro:100);
+html, body {
+  margin: 0;
+  padding: 0;
+}
 
 body {
-    background-color: #97a199;
-    color:white;
-    font-family:'Advent Pro', Helvetica, sans-serif;
-    text-align:center;
+  font-family: "Fira Sans", sans-serif;
+  color: #f5f6fa;
+}
+
+.background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(#0C0E10, #446182);
+}
+.background .ground {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 25vh;
+  background: #0C0E10;
+}
+@media (max-width: 770px) {
+  .background .ground {
+    height: 0vh;
+  }
 }
 
 .container {
-    position:absolute;
-    top:50%;
-    left:50%;
-    width:780px;
-    height:300px;
-    margin-top:-150px;
-    margin-left:-390px;
+  position: relative;
+  margin: 0 auto;
+  width: 85%;
+  height: 100vh;
+  padding-bottom: 25vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+@media (max-width: 770px) {
+  .container {
+    flex-direction: column;
+    padding-bottom: 0vh;
+  }
 }
 
-.name {
-    font-size:7em;
+.left-section, .right-section {
+  position: relative;
 }
 
-.container .sub {
-    font-size:5em;
-    margin-top:-17px;
-    margin-bottom:17px;
+.left-section {
+  width: 40%;
+}
+@media (max-width: 770px) {
+  .left-section {
+    width: 100%;
+    height: 40%;
+    position: absolute;
+    top: 0;
+  }
+}
+@media (max-width: 770px) {
+  .left-section .inner-content {
+    position: relative;
+    padding: 1rem 0;
+  }
 }
 
-.container .social {
-    font-size:1.5em;
-    margin-top:10px;
+.heading {
+  text-align: center;
+  font-size: 9em;
+  line-height: 1.3em;
+  margin: 2rem 0 0.5rem 0;
+  padding: 0;
+  text-shadow: 0 0 1rem #fefefe;
+}
+@media (max-width: 770px) {
+  .heading {
+    font-size: 7em;
+    line-height: 1.15;
+    margin: 0;
+  }
 }
 
-.container .imprint {
-    font-size:4.6em;
+.subheading {
+  text-align: center;
+  max-width: 480px;
+  font-size: 1.5em;
+  line-height: 1.15em;
+  padding: 0 1rem;
+  margin: 0 auto;
+}
+@media (max-width: 770px) {
+  .subheading {
+    font-size: 1.3em;
+    line-height: 1.15;
+    max-width: 100%;
+  }
 }
 
-.container .details {
-    font-size:2.6em;
+.right-section {
+  width: 50%;
+}
+@media (max-width: 770px) {
+  .right-section {
+    width: 100%;
+    height: 60%;
+    position: absolute;
+    bottom: 0;
+  }
 }
 
-a {
-    color:white;
-    text-decoration:none;
+.svgimg {
+  position: absolute;
+  bottom: 0;
+  padding-top: 10vh;
+  padding-left: 1vh;
+  max-width: 100%;
+  max-height: 100%;
+}
+@media (max-width: 770px) {
+  .svgimg {
+    padding: 0;
+  }
+}
+.svgimg .bench-legs {
+  fill: #0C0E10;
+}
+.svgimg .top-bench, .svgimg .bottom-bench {
+  stroke: #0C0E10;
+  stroke-width: 1px;
+  fill: #5B3E2B;
+}
+.svgimg .bottom-bench path:nth-child(1) {
+  fill: #432d20;
+}
+.svgimg .lamp-details {
+  fill: #202425;
+}
+.svgimg .lamp-accent {
+  fill: #2c3133;
+}
+.svgimg .lamp-bottom {
+  fill: linear-gradient(#202425, #0C0E10);
+}
+.svgimg .lamp-light {
+  fill: #EFEFEF;
 }
 
-a:hover {
-    border-bottom:1px dotted white;
-}
-
-.back {
-    position:absolute;
-    top:20px;
-    left:20px;
-    font-size:1.5em;
-}
-
-.footer {
-    position:absolute;
-    left:0;
-    right:0;
-    bottom:20px;
-    font-size:1.5em;
-}
-
-@media all and (max-width:780px) {
-    .container {
-        top:50%;
-        left:50%;
-        width:520px;
-        height:200px;
-        margin-top:-100px;
-        margin-left:-260px;
-    }
-    
-    .container .name {
-        font-size:5em;
-    }
-    
-    .container .sub {
-        font-size:3em;
-        margin-top:-10px;
-        margin-bottom:10px;
-    }
-    
-    .container .social {
-        font-size:1em;
-    }
-    
-    .container .imprint {
-    font-size:2.8em;
-    }
-
-    .container .details {
-        font-size:1.8em;
-    }
-    
-    .back {
-        position:absolute;
-        top:20px;
-        left:20px;
-        font-size:1em;
-    }
-    
-    .footer {
-        position:absolute;
-        left:0;
-        right:0;
-        bottom:20px;
-        font-size:1em;
-    }
+@keyframes glow {
+  0% {
+    text-shadow: 0 0 1rem #fefefe;
+  }
+  50% {
+    text-shadow: 0 0 1.85rem #ededed;
+  }
+  100% {
+    text-shadow: 0 0 1rem #fefefe;
+  }
 }
