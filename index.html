@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <meta charset="UTF-8">
+  <!-- HTML Meta Tags -->
+  <title>DBlockbusters Site | Home</title>
+  <meta name="description" content="This site by Johnathan Brown. Originally made by Bijju089 from CTXStudio.">
+  <!-- Facebook Meta Tags -->
+  <meta property="og:url" content="https://dblockbuster.com"">
+  <meta property=" og:type" content="website">
+  <meta property="og:title" content="DBlockbusters Site | Home"">
+  <meta property=" og:description"
+    content="This site by Johnathan Brown. Originally made by Bijju089 from CTXStudio all in Bootstrap"">
+  <meta property=" og:image" content="server/images/index-meta.PNG">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  <link rel="shortcut icon"
+    href="https://www.minecraft.net/etc.clientlibs/minecraft/clientlibs/main/resources/favicon.ico" type="image/x-icon">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+  <a href="https://mobirise.site"></a>
+  <title>cxSITE</title>
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons2/mobirise2.css">
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons-bold/mobirise-icons-bold.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-reboot.min.css">
+  <link rel="stylesheet" href="assets/animatecss/animate.css">
+  <link rel="stylesheet" href="assets/dropdown/css/style.css">
+  <link rel="stylesheet" href="assets/socicon/css/styles.css">
+  <link rel="stylesheet" href="assets/theme/css/style.css">
+  <link rel="preload"
+    href="https://fonts.googleapis.com/css?family=Georama:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap"
+    as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript>
+    <link rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Georama:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=swap">
+  </noscript>
+  <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css">
+  <link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
+
+  <style>
+    .custom-toggler .navbar-toggler {
+      border-color: lightgreen;
+    }
+  </style>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <script>
+    // Poll API endpoint
+    const pollUrl = `https://poll-ro3v.onrender.com/poll`;
+    const votePollUrl = `https://poll-ro3v.onrender.com/vote`;
+
+    // Function to fetch poll data and update the chart
+    function fetchPollDataAndUpdateChart() {
+      fetch(pollUrl, {
+        headers: {
+          'Access-Controls-Allow-Origin': '*'
+        }
+      })
+        .then(response => response.json())
+        .then(data => {
+          const votesData = data.data.docs.map(vote => vote.option_id);
+
+          // Count the number of "Yes" and "No" votes
+          const yesVotes = votesData.filter(optionId => optionId === "6630232dc356580017d68232").length;
+          const noVotes = votesData.filter(optionId => optionId === "6630232dc356580017d68231").length;
+
+          // Create or update the chart
+          if (window.pollChart.data) {
+            // Update existing chart
+            window.pollChart.data.datasets[0].data = [yesVotes, noVotes];
+            window.pollChart.update();
+          } else {
+            // Create new chart
+            const chartCanvas = document.getElementById('pollChart').getContext('2d');
+            window.pollChart = new Chart(chartCanvas, {
+              type: 'bar',
+              data: {
+                labels: ['Yes', 'No'],
+                datasets: [{
+                  label: 'Number of Votes',
+                  data: [yesVotes, noVotes],
+                  backgroundColor: [
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 99, 132, 0.2)'
+                  ],
+                  borderColor: [
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 99, 132, 1)'
+                  ],
+                  borderWidth: 1
+                }]
+              },
+              options: {
+                scales: {
+                  y: {
+                    beginAtZero: true
+                  }
+                }
+              }
+            });
+          }
+        })
+        .catch(error => console.error('Error fetching poll data:', error));
+    }
+
+    // Function to vote
+    function vote(choice) {
+      fetch(votePollUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          choice: choice
+        })
+      })
+        .then(response => response.json())
+        .then(data => {
+          console.log('Vote successful:', data);
+          // Reload the poll data and update the graph
+          fetchPollDataAndUpdateChart();
+        })
+        .catch(error => console.error('Error voting:', error));
+    }
+
+    // Display initial poll data
+    fetchPollDataAndUpdateChart();
+  </script>
+  </body>
+
+</head>
+
+<body>
+  <section data-bs-version="5.1" class="menu menu3 cid-sFAA5oUu2Y" once="menu" id="menu3-1">
+
+    <nav class="navbar navbar-dropdown navbar-expand-lg">
+      <div class="container">
+        <div class="navbar-brand">
+
+          <span class="navbar-caption-wrap"><a class="navbar-caption text-white text-primary display-5"
+              href="/index.html">DBlockbuster Network</a></span>
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-bs-toggle="collapse"
+          data-target="#navbarSupportedContent" data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent" style="background-color: rgba(53, 53, 53, 1)">
+          <ul class="navbar-nav nav-dropdown" data-app-modern-menu="true">
+            <li class="nav-item"><a class="nav-link link text-white text-primary display-7"
+                href="index.html#content7-4">About</a></li>
+            <li class="nav-item"><a class="nav-link link text-white text-primary display-7"
+                href="faq/index.html">Faq</a>
+            </li>
+            <li class="nav-item"><a class="nav-link link text-white text-primary display-7" href="faq/index.html">Our
+                Servers</a>
+            </li>
+            <li class="nav-item"><a class="nav-link link text-white text-primary display-7"
+                href="https://donate.stripe.com/eVa7uV1vW4Tf8ta288">Donate to us!</a>
+            </li>
+            <li class="nav-item"><a class="nav-link link text-white text-primary display-7" href="rules">Rules</a></li>
+            <li class="nav-item"><a class="nav-link link text-white text-primary display-7" href="moddedservers">
+                Join Modded
+                Server Guides</a></li>
+          </ul>
+
+          <div class="navbar-buttons mbr-section-btn"><a class="btn btn-white-outline display-4"
+              href="index.html#content6-3">Join Now!</a></div>
+        </div>
+      </div>
+    </nav>
+  </section>
+
+  <section data-bs-version="5.1" class="header1 cid-sFCAOqBTxa mbr-fullscreen" id="header1-i">
+
+
+
+    <div class="mbr-overlay" style="opacity: 0.2; background-color: rgb(53, 53, 53);"></div>
+
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-12 col-lg-8">
+          <div
+            style="background-color: rgba(53, 53, 53, 0.7); margin-top: 2rem; padding-top: 0rem; padding-left: 1rem; padding-right: 1rem; margin-left: -1rem; margin-right: -1rem;">
+            <br>
+            <h1 class="mbr-section-title mbr-fonts-style mb-3 display-1"><strong></strong><br></h1>
+
+            <p class="mbr-text mbr-fonts-style display-7">
+              <br><br><strong>
+                The Legendary Story Of NoPlaceLikeRoot The Network Creator</strong>
+              <br>The story that explains what our network is truly about<strong>!!!!</strong><br>
+              <br><br>The Summary of The Story<br><br>
+              The story is about a mysterious and legendary Minecraft server creator named NoPlaceLikeRoot, who emerged
+              to create fair and just servers in a community plagued by greed. Despite facing challenges from the greedy
+              server owners of the past, NoPlaceLikeRoot's servers became renowned for their innovation and dedication
+              to players. His story became a symbol of hope and inspiration, showing that one person can make a
+              difference in the world.
+              <br><br>
+
+            </p>
+            <p class="mbr-text mbr-fonts-style display-7">
+            <div class="d-flex justify-content-center">
+              <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#spoiler-content"
+                aria-expanded="false" aria-controls="spoiler-content"> Click to Read the Full Story!</button>
+            </div>
+            <div class="collapse" id="spoiler-content">
+              <div class="card card-body">
+                <p class="mbr-text mbr-fonts-style display-7">
+                  <!---                  <strong>
+                    The Legendary Story Of NoPlaceLikeRoot The Network Creator<br><br></strong>--->
+
+                  In the world of Minecraft, there was once a server creator known only as NoPlaceLikeRoot. His skills
+                  in
+                  crafting worlds and communities were legendary, but his true identity remained a mystery to all.
+                  NoPlaceLikeRoot's reputation as a hero and savior of the Minecraft community spread far and wide, but
+                  few knew the truth of his origins.
+
+                  Long ago, before NoPlaceLikeRoot emerged, the Minecraft community was plagued by greed. Server
+                  creators
+                  and owners would exploit their players, seeking only to profit and gain power. The players suffered
+                  under their oppressive rule, longing for a server that truly cared for their needs and well-being.
+
+                  One day, a lone figure appeared in the Minecraft community. No one knew where he came from or how he
+                  acquired his skills, but he quickly became known for his fair and just approach to server creation.
+                  NoPlaceLikeRoot's servers were a haven for players, free from the greed and corruption that had
+                  plagued
+                  the community for so long.
+
+                  As his servers grew in popularity, so too did his legend. NoPlaceLikeRoot became a symbol of hope for
+                  the Minecraft community, a beacon of light in a world of darkness. Players from all corners of the
+                  Minecraft universe flocked to his servers, eager to be a part of his vision.
+
+                  But NoPlaceLikeRoot's journey was not without its challenges. The greed of the past server creators
+                  and
+                  owners still lingered, and they saw him as a threat to their power. They sought to undermine his
+                  servers
+                  and destroy his reputation, but NoPlaceLikeRoot was always one step ahead.
+
+                  With his cunning and skill, NoPlaceLikeRoot outmaneuvered his enemies time and time again, solidifying
+                  his place as a true hero of the Minecraft community. His servers became legendary, known for their
+                  innovation and dedication to the players.
+
+                  NoPlaceLikeRoot's story spread far and wide, inspiring countless others to follow in his footsteps.
+                  The
+                  Minecraft community was forever changed by his presence, and his legacy lived on in the hearts of all
+                  who knew his name.
+
+                  And so, the legend of NoPlaceLikeRoot, the legendary server creator and hero to the Minecraft
+                  community,
+                  was born. His story would be told for generations to come, a testament to the power of courage,
+                  compassion, and the belief that a single individual can make a difference in the world.
+                </p>
+              </div>
+            </div>
+            </p>
+
+            <p class="mbr-text mbr-fonts-style display-7">
+              <br><br>
+              Fun Fact: NoPlaceLikeRoot translates to common english as No Place Like Home from Developer Slang.
+              <br><br>
+              So Feel At Home In Our Community!
+            </p>
+            <div class="mbr-section-btn mt-3"><a class="btn btn-primary display-4"
+                href="https://donate.stripe.com/eVa7uV1vW4Tf8ta288">Sponsor us!</a> <a
+                class="btn btn-secondary display-4" href="rules/?support=crmap">Rules</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section data-bs-version="5.1" class="content7 cid-sWrAXzcsgd" id="content7-4">
+
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-12 col-md-10">
+          <blockquote>
+            <h5 class="mbr-section-title mbr-fonts-style mb-2 display-7"><strong>About us</strong></h5>
+            <p class="mbr-text mbr-fonts-style display-4">DBlockbuster Is a unique network and collection of Minecraft
+              Servers and Modded Minecraft Servers all in offline authentication setups to allow anyone who doesnt own
+              Minecraft to be available to join, Before reading any further go and read the rules <a
+                href="rules/?red=crmap" class="text-primary">here</a></p>
+          </blockquote>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section data-bs-version="5.1" class="content6 cid-sWrwNJpsaf" id="content6-3">
+
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-12 col-lg-10">
+          <hr class="line">
+          <p class="mbr-text align-center mbr-fonts-style my-4 display-5">
+            <em>Server IP: mc.dblockbuster.com</em><em><br></em>
+            <em>Network Wide Server Versions: 1.20.1</em><em><br></em>
+            <a href="https://discord.dblockbuster.com/" class="text-primary" target="_blank">
+              <em>
+                <button class="btn btn-secondary "><i style="margin-right: 1rem;" class="fab fa-discord"></i>Join
+                  our
+                  Discord
+                </button>
+              </em>
+            </a>
+          </p>
+          <hr class=" line">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section data-bs-version="5.1" class="content4 cid-sFADQxFnEn" id="content4-5">
+
+
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="title col-md-12 col-lg-10">
+          <h3 class="mbr-section-title mbr-fonts-style align-center mb-4 display-2"><strong>What makes us
+              special</strong></h3>
+
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section data-bs-version="5.1" class="features14 cid-sWrtxLe5ld" id="features15-0">
+
+
+
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="card col-12 col-md-6 col-lg-4">
+          <div class="card-wrapper">
+            <span class="mbr-iconfont mobi-mbri-protect mobi-mbri m-auto"></span>
+            <div class="card-box">
+              <h4 class="card-title mbr-fonts-style mb-2 display-7"><strong>Optimized&nbsp;</strong></h4>
+              <h5 class="card-text mbr-fonts-style display-4">We want to keep in mind not everyone has a beast gaming
+                computer so to account for this we will always host a light version of any servers with mods like the
+                all the mods 9 server we will have a all the mods 9 no frills which will help support users with only
+                8gb of ram or less and to account for the users with less ram as well we will be working on hosting a
+                even more light weight version of no frills to help account for 2gb of ram users!</h5>
+              <h5 class="card-text mbr-fonts-style display-4">Our Cinema Server has a modifed version of webDisplays
+                which helps optimize the cpu and resource usage of the client for the browser rendering compared to the
+                original mod so we can eventually bundle with all the mods 9!</h5>
+              <h5 class="card-text mbr-fonts-style display-4">Our Faction Server which will be coming soon will be a
+                modified version of Moder Warfare Cubed which offers less performance usage then the original mod!</h5>
+            </div>
+          </div>
+        </div>
+        <div class="card col-12 col-md-6 col-lg-4">
+          <div class="card-wrapper">
+            <span class="mbr-iconfont m-auto mobi-mbri-website-theme-2 mobi-mbri"></span>
+            <div class="card-box">
+              <h4 class="card-title mbr-fonts-style mb-2 display-7"><strong>Vanilla Servers and Modded Servers</strong>
+              </h4>
+              <h5 class="card-text mbr-fonts-style display-4">We Have a interesting collection of servers for you to
+                enjoy ranging from regular vanilla survival to full on all out modpacks like all the mods 9 no frills
+                modpack. Or if you just wanna hang out and watch movies and tvshows with friends we have the Cinematic
+                Theater modded server you can join and if you wish you can even make your own theater when it's
+                finalized.</h5>
+              <h5 class="card-text mbr-fonts-style display-4">Coming Soon will be the following a Faction server with
+                Guns Mods and Turrets included get ready to have all out war even air dog fights with our customized
+                server plugin and the SimplePlanes mod to allow you to shoot while flying these simple planes!</h5>
+            </div>
+          </div>
+        </div>
+        <div class="card col-12 col-md-6 col-lg-4">
+          <div class="card-wrapper">
+            <span class="mbr-iconfont m-auto mbrib-speed"></span>
+            <div class="card-box">
+              <h4 class="card-title mbr-fonts-style mb-2 display-7">
+                <strong>What Makes Our Network Unique?</strong>
+              </h4>
+              <h5 class="card-text mbr-fonts-style display-4">Unlike most servers which will put there revenue before
+                the players experience first we can ensure in our community this will never be the case! We will ensure
+                we take in the communitys wants and needs first before attempting to take into account our revenue as
+                long as the donations support and sustains the cost of the server staying running that is all that
+                matters to our network. Also with our server being personally hosted unlike others who pay for a hosting
+                service we keep our cost of upkeep low to not require mass amounts of donations to keep upkeep!</h5>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section data-bs-version="5.1" class="testimonials2 cid-sFAO03Bfrt" id="testimonials2-a">
+
+
+    <div class="container">
+      <h3 class="mbr-section-title mbr-fonts-style align-center mb-4 display-5"><strong>Our Team</strong><br><br><br>
+      </h3>
+      <div class="row justify-content-center">
+        <div class="card col-12 col-md-6">
+          <a href="https://github.com/john1234brown">
+            <p class="mbr-text mbr-fonts-style mb-4 display-7">Thanks for this best site CXStudios! Thank you to all
+              the players that make this community what it is!</p>
+            <div class="d-flex mb-md-0 mb-4">
+              <div class="image-wrapper">
+                <img src="assets/images/mbr-2.png" alt="image">
+              </div>
+              <div class="text-wrapper">
+                <p class="name mbr-fonts-style mb-1 display-4"><strong>John</strong></p>
+                <p class="position mbr-fonts-style display-4">
+                  <strong>[Founder]</strong>
+                </p>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="card col-12 col-md-6">
+          <a href="https://github.com/Vampeyer">
+            <p class="mbr-text mbr-fonts-style mb-4 display-7">Thanks for choosing our community thanks to my years of
+              gaming I'm able to help this network become what it is! With my creative mind.</p>
+            <div class="d-flex mb-md-0 mb-4">
+              <div class="image-wrapper">
+                <img src="assets/images/mbr-2.png" alt="userimage">
+              </div>
+              <div class="text-wrapper">
+                <p class="name mbr-fonts-style mb-1 display-4"><strong>DToxxed</strong></p>
+                <p class="position mbr-fonts-style display-4">
+                  <strong>[Founder]</strong>
+                </p>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="card col-12 col-md-6">
+          <a href="https://github.com/nullpixels">
+            <p class="mbr-text mbr-fonts-style mb-4 display-7">Thanks for choosing our community thanks to my graphic
+              designs expertise and building skills I'm able to help this network become what it is! With my
+              inspirational
+              and creative Rembrandt mentality!</p>
+            <div class="d-flex mb-md-0 mb-4">
+              <div class="image-wrapper">
+                <img src="assets/images/mbr-2.png" alt="userimage">
+
+              </div>
+              <div class="text-wrapper">
+                <p class="name mbr-fonts-style mb-1 display-4"><strong>NullPixels</strong></p>
+                <p class="position mbr-fonts-style display-4">
+                  <strong>[Founder]</strong>
+                </p>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="card col-12 col-md-6">
+          <a href="https://github.com/Vampeyer">
+            <p class="mbr-text mbr-fonts-style mb-4 display-7">Thanks for choosing our community thanks to my
+              CyberSecurity expertise we can ensure your secure!</p>
+            <div class="d-flex mb-md-0 mb-4">
+              <div class="image-wrapper">
+                <img src="assets/images/mbr-2.png" alt="userimage">
+          </a>
+        </div>
+        <div class="text-wrapper">
+          <p class="name mbr-fonts-style mb-1 display-4"><strong>Vampeyer</strong></p>
+          <p class="position mbr-fonts-style display-4">
+            <strong>[Founder]</strong>
+          </p>
+        </div>
+      </div>
+      </a>
+    </div>
+    </div>
+    </div>
+  </section>
+
+  <section data-bs-version="5.1" class="testimonials2 cid-sFAO03Bfrt" id="testimonials2-b">
+
+
+    <div class="container">
+      <h3 class="mbr-section-title mbr-fonts-style align-center mb-4 display-5"><strong>Votes</strong><br>Votes at:
+        https://www.pollsapi.com/<br><br></h3>
+      <h3 class="mbr-section-title mbr-fonts-style align-center mb-4 display-5"><strong>Question?</strong><br>Do You
+        Like DBlockbuster Network So Far?<br><br></h3>
+      <div class="row justify-content-center">
+        <div class="card col-12 col-md-6">
+          <canvas id="pollChart" width="400" height="200"></canvas>
+          <p>Please note our Poll Endpoint only updates the Data every 5 minutes allow up to 5 minutes for your new vote
+            to be displayed this helps decrease rate limit calls!</p>
+          <br><br>
+
+          <button class="btn btn-secondary btn-lg btn-block" onclick="vote('6630232dc356580017d68232')">Vote
+            Yes</button>
+          <button class="btn btn-primary btn-lg btn-block" onclick="vote('6630232dc356580017d68231')">Vote No</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section data-bs-version="5.1" class="social1 cid-sWrwHnEuQO" id="share1-2">
+
+
+    <div class="mbr-overlay" style="opacity: 0.5; background-color: rgb(0, 0, 0);">
+    </div>
+
+    <div class="container">
+      <div class="media-container-row">
+        <div class="col-12">
+          <h3 class="mbr-section-title mb-3 align-center mbr-fonts-style display-2">
+            <strong>Share this Page!</strong>
+          </h3>
+          <div>
+            <div class="mbr-social-likes align-center">
+              <span class="btn btn-social socicon-bg-facebook facebook m-2">
+                <a href="https://www.facebook.com/sharer/sharer.php?u=https://yourwebsite.com" target="_blank">
+                  <i class="socicon socicon-facebook"></i>
+                </a>
+              </span>
+              <span class="btn btn-social twitter socicon-bg-twitter m-2">
+                <a href="https://twitter.com/intent/tweet?url=https://yourwebsite.com" target="_blank">
+                  <i class="socicon socicon-twitter"></i>
+                </a>
+              </span>
+              <span class="btn btn-social vkontakte socicon-bg-vkontakte m-2">
+                <a href="https://vk.com/share.php?url=https://yourwebsite.com" target="_blank">
+                  <i class="socicon socicon-vkontakte"></i>
+                </a>
+              </span>
+              <span class="btn btn-social odnoklassniki socicon-bg-odnoklassniki m-2">
+                <a href="https://connect.ok.ru/offer?url=https://yourwebsite.com" target="_blank">
+                  <i class="socicon socicon-odnoklassniki"></i>
+                </a>
+              </span>
+              <span class="btn btn-social pinterest socicon-bg-pinterest m-2">
+                <a href="https://pinterest.com/pin/create/button/?url=https://yourwebsite.com" target="_blank">
+                  <i class="socicon socicon-pinterest"></i>
+                </a>
+              </span>
+              <span class="btn btn-social mailru socicon-bg-mail m-2">
+                <a href="https://connect.mail.ru/share?url=https://yourwebsite.com" target="_blank">
+                  <i class="socicon socicon-mail"></i>
+                </a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section data-bs-version="5.1" class="footer3 cid-sFAOjz8nX7" once="footers" id="footer3-d">
+
+
+
+
+
+    <div class="container">
+      <div class="media-container-row align-center mbr-white">
+
+
+        <div class="row row-copirayt">
+          <p class="mbr-text mb-0 mbr-fonts-style mbr-white align-center display-7">
+            © Copyright 2022 cxSTUDIOS | Copyright DBlockbuster.com 2024
+          </p>
+        </div>
+      </div>
+    </div>
+    <script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/smoothscroll/smooth-scroll.js"></script>
+    <script src="assets/ytplayer/index.js"></script>
+    <script src="assets/dropdown/js/navbar-dropdown.js"></script>
+    <script src="assets/mbr-switch-arrow/mbr-switch-arrow.js"></script>
+    <script src="assets/theme/js/script.js"></script>
+
+    <input name="animation" type="hidden">
+
+</body>
+
+</html>
