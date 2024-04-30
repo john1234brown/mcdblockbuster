@@ -1,9 +1,44 @@
-/*
- Copyright of DBlockbuster 2024 This has been added by DBlockbuster for the site for extra stylng needs by DBlockbuster
-*/
-
 .listOfRequirements {
   text-align: center;
   font-size: 1.25rem;
   color: white;
+}
+
+.btn-primary2 {
+  background-color: #a600ff;
+  color: white;
+  text-align: center;
+}
+
+.btn-primary2:hover {
+  background-color: #7617b5;
+  color: white;
+  font-style: bold;
+}
+
+
+.btn-secondary2 {
+  background-color: #c95213;
+  color: black;
+  text-align: center;
+  
+}
+
+.btn-secondary2:hover {
+  background-color: #f27107;
+  color: black;
+  font: bold;
+}
+
+.btn-yt2 {
+  background-color: #c91313;
+  color: white;
+  text-align: center;
+
+}
+
+.btn-yt2:hover {
+  background-color: #f20707;
+  color: white;
+  font: bold;
 }
