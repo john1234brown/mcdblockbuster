@@ -458,7 +458,8 @@ body {
   border-color: #fafafa !important;
 }
 .text-primary {
-  color: #22a5e5 !important;
+  color: #a600ff !important;
+  font-weight: 500;
 }
 .text-secondary {
   color: #5cdb95 !important;
@@ -484,7 +485,8 @@ body {
 a.text-primary:hover,
 a.text-primary:focus,
 a.text-primary.active {
-  color: #116690 !important;
+  color: #7617b5 !important;
+  font-weight: 600;
 }
 a.text-secondary:hover,
 a.text-secondary:focus,
@@ -553,10 +555,10 @@ a[class*="text-"]:not(.nav-link):not(.dropdown-item):not([role]):not(.navbar-cap
   background-color: #ff9966;
 }
 .mbr-section-btn a.btn:not(.btn-form) {
-  border-radius: 100px;
+  /*border-radius: 100px;*/
 }
 .mbr-gallery-filter li a {
-  border-radius: 100px !important;
+  /*border-radius: 100px !important;*/
 }
 .mbr-gallery-filter li.active .btn {
   background-color: #22a5e5;
