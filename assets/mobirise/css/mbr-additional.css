@@ -1167,6 +1167,8 @@ a {
 }
 .cid-sWrtxLe5ld .card-wrapper {
   display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 @media (max-width: 991px) {
   .cid-sWrtxLe5ld .card-wrapper {
