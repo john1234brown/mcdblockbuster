@@ -496,16 +496,16 @@ body {
 .btn-white-outline,
 .btn-white-outline:active {
   background-color: transparent !important;
-  border-color: #fafafa;
+  border-color: #a600ff;
   color: #fafafa;
 }
 .btn-white-outline:hover,
 .btn-white-outline:focus,
 .btn-white-outline.focus,
 .btn-white-outline.active {
-  color: #cfcfcf !important;
-  background-color: transparent!important;
-  border-color: #cfcfcf !important;
+  color: #000000 !important;
+  background-color: #a600ff!important;
+  border-color: #7617b5 !important;
   box-shadow: none!important;
 }
 .btn-white-outline.disabled,
