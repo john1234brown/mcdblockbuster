@@ -217,6 +217,9 @@ iframe {
 }
 
 .card-box {
+  margin-top: 1rem;
+  justify-content: center !important;
+  text-align: center !important;
   width: 100%;
 }
 
