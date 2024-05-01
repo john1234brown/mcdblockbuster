@@ -4,6 +4,7 @@
 body {
   font-family: Jost;
 }
+
 .display-1 {
   font-family: 'Georama', sans-serif;
   font-size: 5rem;
@@ -36,6 +37,14 @@ body {
 .display-5 > .mbr-iconfont {
   font-size: 2rem;
 }
+.display-6 {
+  font-family: 'Georama', sans-serif;
+  font-size: 1.6rem;
+  line-height: 1.5;
+}
+.display-6 > .mbr-iconfont {
+  font-size: 2rem;
+}
 .display-7 {
   font-family: 'Georama', sans-serif;
   font-size: 1.2rem;
@@ -47,8 +56,9 @@ body {
 /* ---- Fluid typography for mobile devices ---- */
 /* 1.4 - font scale ratio ( bootstrap == 1.42857 ) */
 /* 100vw - current viewport width */
-/* (48 - 20)  48 == 48rem == 768px, 20 == 20rem == 320px(minimal supported viewport) */
+/* (48 - 20)  48 == 48rem == 768px, 10 == 10rem == 320px(minimal supported viewport) */
 /* 0.65 - min scale variable, may vary */
+/* Original Flud Typography calculations from CXStudios*/
 @media (max-width: 992px) {
   .display-1 {
     font-size: 4rem;
@@ -75,12 +85,59 @@ body {
     font-size: calc( 1.21rem + (1.6 - 1.21) * ((100vw - 20rem) / (48 - 20)));
     line-height: calc( 1.4 * (1.21rem + (1.6 - 1.21) * ((100vw - 20rem) / (48 - 20))));
   }
+  .display-6 {
+    font-size: 1.28rem;
+    font-size: calc( 1.21rem + (1.6 - 1.21) * ((100vw - 20rem) / (48 - 20)));
+    line-height: calc( 1.4 * (1.21rem + (1.6 - 1.21) * ((100vw - 20rem) / (48 - 20))));
+  }
   .display-7 {
     font-size: 0.96rem;
     font-size: calc( 1.07rem + (1.2 - 1.07) * ((100vw - 20rem) / (48 - 20)));
     line-height: calc( 1.4 * (1.07rem + (1.2 - 1.07) * ((100vw - 20rem) / (48 - 20))));
   }
 }
+
+@media (max-width: 450px) {
+  .display-5 {
+    font-size: 1rem;
+    line-height: 1;
+  }
+  .navbar-brand {
+    padding: 0; /* Remove padding to allow logo to fit */
+  }
+  .navbar-brand img {
+    max-width: 80px; /* Reduce max-width of the logo */
+  }
+  .navbar-caption-wrap {
+    margin-left: 5px; /* Adjust margin for better alignment with the logo */
+  }
+}
+
+@media (max-width: 350px) {
+  .display-5 {
+    font-size: .9rem;
+    line-height: .8;
+  }
+  .navbar-brand {
+    padding: 0; /* Remove padding to allow logo to fit */
+  }
+  .navbar-brand img {
+    max-width: 60px; /* Reduce max-width of the logo */
+  }
+}
+@media (max-width: 280px) {
+  .display-5 {
+    font-size: .8rem;
+    line-height: .5;
+  }
+  .navbar-brand {
+    padding: 0; /* Remove padding to allow logo to fit */
+  }
+  .navbar-brand img {
+    max-width: 40px; /* Reduce max-width of the logo */
+  }
+}
+
 /* Buttons */
 .btn {
   padding: 0.6rem 1.2rem;
@@ -769,6 +826,11 @@ a {
   display: flex;
   margin: auto;
 }
+.cid-sFAA5oUu2Y .container2 {
+  display: flex;
+  margin: auto;
+}
+
 .cid-sFAA5oUu2Y .iconfont-wrapper {
   color: #05386b !important;
   font-size: 1.5rem;
@@ -1362,6 +1424,10 @@ a {
   position: relative;
 }
 .cid-sFAA5oUu2Y .container {
+  display: flex;
+  margin: auto;
+}
+.cid-sFAA5oUu2Y .container2 {
   display: flex;
   margin: auto;
 }
