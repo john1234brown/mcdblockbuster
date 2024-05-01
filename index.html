@@ -47,95 +47,12 @@
     }
   </style>
 
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-  <script>
-    // Poll API endpoint
-    const pollUrl = `https://poll-ro3v.onrender.com/poll`;
-    const votePollUrl = `https://poll-ro3v.onrender.com/vote`;
-
-    // Function to fetch poll data and update the chart
-    function fetchPollDataAndUpdateChart() {
-      fetch(pollUrl, {
-        headers: {
-          'Access-Controls-Allow-Origin': '*'
-        }
-      })
-        .then(response => response.json())
-        .then(data => {
-          const votesData = data.data.docs.map(vote => vote.option_id);
-
-          // Count the number of "Yes" and "No" votes
-          const yesVotes = votesData.filter(optionId => optionId === "6630232dc356580017d68232").length;
-          const noVotes = votesData.filter(optionId => optionId === "6630232dc356580017d68231").length;
-
-          // Create or update the chart
-          if (window.pollChart.data) {
-            // Update existing chart
-            window.pollChart.data.datasets[0].data = [yesVotes, noVotes];
-            window.pollChart.update();
-          } else {
-            // Create new chart
-            const chartCanvas = document.getElementById('pollChart').getContext('2d');
-            window.pollChart = new Chart(chartCanvas, {
-              type: 'bar',
-              data: {
-                labels: ['Yes', 'No'],
-                datasets: [{
-                  label: 'Number of Votes',
-                  data: [yesVotes, noVotes],
-                  backgroundColor: [
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 99, 132, 0.2)'
-                  ],
-                  borderColor: [
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 99, 132, 1)'
-                  ],
-                  borderWidth: 1
-                }]
-              },
-              options: {
-                scales: {
-                  y: {
-                    beginAtZero: true
-                  }
-                }
-              }
-            });
-          }
-        })
-        .catch(error => console.error('Error fetching poll data:', error));
-    }
-
-    // Function to vote
-    function vote(choice) {
-      fetch(votePollUrl, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          choice: choice
-        })
-      })
-        .then(response => response.json())
-        .then(data => {
-          console.log('Vote successful:', data);
-          // Reload the poll data and update the graph
-          fetchPollDataAndUpdateChart();
-        })
-        .catch(error => console.error('Error voting:', error));
-    }
-
-    // Display initial poll data
-    fetchPollDataAndUpdateChart();
-  </script>
-  </body>
-
 </head>
 
 <body>
+  <!--- Place Holder For Toast Notifications! --->
+  <div class="toast-container"></div>
+
   <section data-bs-version="5.1" class="menu menu3 cid-sFAA5oUu2Y" once="menu" id="menu3-1">
 
     <nav class="navbar navbar-dropdown navbar-expand-lg" style="background-color: rgba(53, 53, 53, 1)">
@@ -660,7 +577,146 @@
     <script src="assets/dropdown/js/navbar-dropdown.js"></script>
     <script src="assets/mbr-switch-arrow/mbr-switch-arrow.js"></script>
     <script src="assets/theme/js/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
+    <script>
+      window.onload = function () {
+        //showToast('This is a success message', 'success');
+        //showToast('This is an error message', 'danger');
+      };
+
+      function showToast(message, alertType) {
+        var toastEl = document.createElement('div');
+        toastEl.classList.add('toast');
+        toastEl.setAttribute('role', 'alert');
+        toastEl.setAttribute('aria-live', 'assertive');
+        toastEl.setAttribute('aria-atomic', 'true');
+
+        var toastHeader = document.createElement('div');
+        toastHeader.classList.add('toast-header', 'toast-title'); // Add 'toast-title' class
+        var strong = document.createElement('strong');
+        strong.classList.add('me-auto');
+        strong.textContent = alertType;
+        var toastBody = document.createElement('div');
+        toastBody.classList.add('toast-body', 'toast-description'); // Add 'toast-description' class
+        toastBody.textContent = message;
+
+        toastHeader.appendChild(strong);
+        toastEl.appendChild(toastHeader);
+        toastEl.appendChild(toastBody);
+
+        document.querySelector('.toast-container').appendChild(toastEl);
+
+        var bootstrapToast = new bootstrap.Toast(toastEl);
+        bootstrapToast.show();
+
+        // Automatically remove the toast after it's hidden
+        toastEl.addEventListener('hidden.bs.toast', function () {
+          toastEl.remove();
+        });
+      }
+
+      // Poll API endpoint
+      const pollUrl = `https://poll-ro3v.onrender.com/poll`;
+      const votePollUrl = `https://poll-ro3v.onrender.com/vote`;
+
+      // Function to fetch poll data and update the chart
+      function fetchPollDataAndUpdateChart() {
+        fetch(pollUrl, {
+          headers: {
+            'Access-Controls-Allow-Origin': '*'
+          }
+        })
+          .then(response => response.json())
+          .then(data => {
+            const votesData = data.data.docs.map(vote => vote.option_id);
+
+            // Count the number of "Yes" and "No" votes
+            const yesVotes = votesData.filter(optionId => optionId === "6630232dc356580017d68232").length;
+            const noVotes = votesData.filter(optionId => optionId === "6630232dc356580017d68231").length;
+
+            // Create or update the chart
+            if (window.pollChart.data) {
+              // Update existing chart
+              window.pollChart.data.datasets[0].data = [yesVotes, noVotes];
+              window.pollChart.update();
+            } else {
+              // Create new chart
+              const chartCanvas = document.getElementById('pollChart').getContext('2d');
+              window.pollChart = new Chart(chartCanvas, {
+                type: 'bar',
+                data: {
+                  labels: ['Yes', 'No'],
+                  datasets: [{
+                    label: 'Number of Votes',
+                    data: [yesVotes, noVotes],
+                    backgroundColor: [
+                      'rgba(54, 162, 235, 0.2)',
+                      'rgba(255, 99, 132, 0.2)'
+                    ],
+                    borderColor: [
+                      'rgba(54, 162, 235, 1)',
+                      'rgba(255, 99, 132, 1)'
+                    ],
+                    borderWidth: 1
+                  }]
+                },
+                options: {
+                  scales: {
+                    y: {
+                      beginAtZero: true
+                    }
+                  }
+                }
+              });
+            }
+          })
+          .catch(error => {
+            console.error('Error Code: ' + error.code + ' Error fetching poll data:', error);
+            if (error.code === 429) {
+
+            }
+          });
+      }
+
+      // Function to vote
+      function vote(choice) {
+        fetch(votePollUrl, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            choice: choice
+          })
+        }).then(response => {
+          if (response.status === 429) {
+            showToast("Vote Failed You are only allowed to vote 1 time per hour!", 'Error');
+            //console.log('Captured!');
+            response => null;
+          }
+          if (response.status === 200) {
+            showToast("Vote Successful Please allow up to 5 minutes for the graph to show your new vote entry.", 'Success');
+            response => response.json();
+          }
+          if (response.status !== 200 && response.status !== 429) {
+            showToast("Vote Failed Server must be offline we are sorry for the inconvenience.", 'Error');
+          }
+        }).then(data => {
+          if (data) {
+            //console.log('Data is valid!');
+          } else {
+            //console.log('Error!');
+          }
+          // Reload the poll data and update the graph
+          fetchPollDataAndUpdateChart();
+        })
+          .catch(error => console.error('Error voting:', error));
+      }
+
+      // Display initial poll data
+      fetchPollDataAndUpdateChart();
+    </script>
     <input name="animation" type="hidden">
 
 </body>
