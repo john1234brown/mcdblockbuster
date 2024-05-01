@@ -941,7 +941,8 @@ blockquote {
 .dropdown-item:hover + .dropdown-menu,
 .dropdown-menu:hover {
   display: block;
-}.engine {
+}
+.engine {
 	position: absolute;
 	text-indent: -2400px;
 	text-align: center;
