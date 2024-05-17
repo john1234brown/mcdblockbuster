@@ -1,0 +1,48 @@
+<section data-bs-version="5.1" class="menu menu3 cid-sFAA5oUu2Y" once="menu" id="menu3-1">
+
+  <nav class="navbar navbar-dropdown navbar-expand-lg" style="background-color: rgba(53, 53, 53, 1)">
+    <div class="container2">
+      <div class="navbar-brand">
+        <span class="navbar-logo">
+          <a class="navbar-caption text-white text-primary display-5" href="/index.html">
+            <img class="img-fluid" src="files/Logo.png" alt="Logo"></img>
+          </a>
+        </span>
+        <span class=" navbar-caption-wrap"><a class="navbar-caption text-white text-primary display-5"
+            href="/index.html">DBlockbuster</a></span>
+      </div>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-bs-toggle="collapse"
+        data-target="#navbarSupportedContent" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <div class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent" style="background-color: rgba(53, 53, 53, 1)">
+        <ul class="navbar-nav nav-dropdown" data-app-modern-menu="true">
+          <li class="nav-item"><a class="nav-link link text-white text-primary display-7"
+              href="index.html#content7-4">About</a></li>
+          <li class="nav-item"><a class="nav-link link text-white text-primary display-7"
+              href="faq/index.html">Faq</a>
+          </li>
+          <li class="nav-item"><a class="nav-link link text-white text-primary display-7" href="faq/index.html">Our
+              Servers</a>
+          </li>
+          <li class="nav-item"><a class="nav-link link text-white text-primary display-7"
+              href="https://donate.stripe.com/eVa7uV1vW4Tf8ta288">Donate to us!</a>
+          </li>
+          <li class="nav-item"><a class="nav-link link text-white text-primary display-7" href="rules">Rules</a></li>
+          <li class="nav-item"><a class="nav-link link text-white text-primary display-7" href="moddedservers">
+              Join Modded
+              Server Guides</a></li>
+        </ul>
+
+        <div class="navbar-buttons mbr-section-btn"><a class="btn btn-white-outline display-4"
+            href="index.html#content6-3">Join Now!</a></div>
+      </div>
+    </div>
+  </nav>
+</section>
